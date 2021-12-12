@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<script src="add.js" type="text/javascript">
+
+	</script>
+	<link rel="stylesheet" href="style.css">
+	<title>Addition Practice</title>
+</head>
+
+<body onload="formLoad()">
+	<h1>Addition Practice</h1>
+	<div>
+		Level:
+		<select id="selectLevel" onchange="levelChange()">
+            <option value="10">Moderate</option>
+            <option value="100">Hard</option>
+            <option value="1000">Challanging</option>
+            <option value="10000">Cyptic</option>
+        </select>
+        <label id="lblTimeLeft"></label>
+    </div>
+    <hr />
+    <div>
+        What is <label id="lblFirst"></label> + <label id="lblSecond"></label> = ?
+    </div>
+    <div>
+        Answer:<input type="text" value="" id="txtAnswer" autocomplete="off"/>
+    </div>
+    <hr />
+    <div>
+        <button onclick="submit()" type="button" id="btnSubmit">Submit</button>
+        <button onclick="skip()" type="button" id="btnSkip">Skip Question</button>
+        <button input type="button" value="Reload Page" onClick="document.location.reload(true)"> Reset
+    </div>
+    <hr />
+    <div>
+        Number Correct: <label id="lblCorrect"></label>
+    </div>
+    <div>
+        Number Incorrect: <label id="lblIncorrect"></label>
+    </div>
+    <div>
+        <label id="lblwrong"></label>
+    </div>
+    <div>
+        <label id="lblMsg"></label>
+    </div>
+    <hr>
+    <a href="divide.html">Division Practice</a>
+    <a href="subtract.html">Subtraction Practice</a>
+    <a href="index.html">Multiplication Practice</a>
+    </hr>
+</body>
+</html>
