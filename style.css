@@ -6,21 +6,31 @@ h1 {
     font-family: monospace Nova;
 }
 
+
+h3 {
+  color: #00ff08;
+  font-weight: 200;
+  font-size: 18px;
+  font-family: monospace;
+}
+
+
 body {
     font-size: 16px;
     font-family: monospace;
     background-color: black;
     padding: 5px;
     background-image: url('background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
     background-attachment: fixed;
-    background-blend-mode: luminosity;
     color: #00ff08
 }
+
+
 div{
     font-size:16px;
 }
+
+
 button {
     border-radius: 20px;
     background-color: #00ff08;
@@ -28,12 +38,15 @@ button {
     color: black;
 }
 
+
 input {
     border-radius: 20px;
     background-color: #00ff08;
     border-color: white;
     color: black;
 }
+
+
 select {
     border-radius: 20px;
     background-color: black;
@@ -41,9 +54,11 @@ select {
     color: #00ff08;
 }
 
+
 label {
     color: aqua;
 }
+
 
 hr {
   height: 1px;
@@ -51,6 +66,14 @@ hr {
   border: none;
 }
 
+
 a {
-  color: #00ff08
+  color: #00ff08;
+  font-family: monospace;
+  font-style: italic
+}
+
+
+ul {
+  list-style: square;
 }
