@@ -10,8 +10,15 @@ function formLoad() {
     let lblFirst = document.getElementById('lblFirst');
     let lblSecond = document.getElementById('lblSecond');
     let level = hardness();
-    let x = Math.round((Math.random(1, 9) * level));
-    let y = Math.round((Math.random(1, 9) * level));
+    let x = Math.round((Math.random() * level));
+    let y = Math.round((Math.random() * level));
+    let random = Math.round(Math.random() * 10);
+    if (random > 6){
+      x = x * -1
+      y = y * -1
+    } else if (random < 3){
+      x = x * -1
+    }
     lblFirst.innerHTML = x.toString();
     lblSecond.innerHTML = y.toString();
     lblwrong.innerHTML = ' '
@@ -88,7 +95,7 @@ function validate(first, second) {
     else {
         let txtAnswer = document.getElementById('txtAnswer');
         let times = first - second;
-        if (times == txtAnswer.value)
+        if (times == txtAnswer.value && txtAnswer.value.length > 0)
             return true;
         else
             return false;
