@@ -10,8 +10,8 @@ function formLoad() {
   let lblFirst = document.getElementById('lblFirst');
   let lblSecond = document.getElementById('lblSecond');
   let level = hardness();
-  let x = Math.round((Math.random(0, 9) * level));
-  let y = Math.round((Math.random(0, 9) * level));
+  let x = Math.round((Math.random() * level));
+  let y = Math.round((Math.random() * level));
   let random = Math.round(Math.random() * 10);
   if (random > 6) {
     x = x * -1
@@ -75,15 +75,17 @@ function levelChange() {
 function submit() {
   let lblFirst = document.getElementById('lblFirst').innerHTML;
   let lblSecond = document.getElementById('lblSecond').innerHTML;
-  let outcome = validate(parseInt(lblFirst), parseInt(lblSecond));
+  let outcome = validate(lblFirst, lblSecond);
   let lbl = document.getElementById('lblMsg');
   if (outcome) {
+    lbl.style.color = 'aqua'
     lbl.innerHTML = 'Correct';
     showCorrect();
   }
   else {
-    showIncorrect();
+    lbl.style.color = 'red'
     lbl.innerHTML = 'Incorrect';
+    showIncorrect();
   }
   formLoad();
 }
