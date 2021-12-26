@@ -1,6 +1,6 @@
-var isSession = false;
-var timeleft = 10;
+var timeleft  = 30;
 var timeoutId;
+var btnFreeze = document.getElementById('btnFreeze');
 
 
 function formLoad() {
@@ -55,9 +55,14 @@ function startTimer() {
     let lbl = document.getElementById('lblTimeLeft');
     lbl.innerHTML = timeleft.toString();
     if (timeleft > 0) {
+      if (timeleft < 11) {
+        lbl.style.color = "red"
+      } else {
+        lbl.style.color = "aqua"
+      }
       startTimer();
       timeleft = timeleft - 1;
-    }
+    } 
     else {
       submit();
     }
@@ -76,15 +81,15 @@ function submit() {
   let lblFirst = document.getElementById('lblFirst').innerHTML;
   let lblSecond = document.getElementById('lblSecond').innerHTML;
   let outcome = validate(lblFirst, lblSecond);
-  let lbl = document.getElementById('lblMsg');
+  let lblMsg = document.getElementById('lblMsg');
   if (outcome) {
-    lbl.style.color = 'aqua'
-    lbl.innerHTML = 'Correct';
+    lblMsg.style.color = 'aqua'
+    lblMsg.innerHTML = 'Correct';
     showCorrect();
   }
   else {
-    lbl.style.color = 'red'
-    lbl.innerHTML = 'Incorrect';
+    lblMsg.style.color = 'red'
+    lblMsg.innerHTML = 'Incorrect';
     showIncorrect();
   }
   formLoad();
@@ -136,4 +141,16 @@ function skip() {
   let txtAnswer = document.getElementById('txtAnswer');
   txtAnswer.value = '';
   submit();
+}
+
+
+function freeze() {
+  btnFreeze = document.getElementById('btnFreeze')
+  if (btnFreeze.value == "Pause") {
+    btnFreeze.value = "Resume";
+    btnFreeze.innerHTML = "Resume";
+  } else {
+    btnFreeze.value = "Pause";
+    btnFreeze.innerHTML = "Pause";
+  }
 }

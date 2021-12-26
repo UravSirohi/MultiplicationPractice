@@ -20,7 +20,6 @@ body {
     font-family: monospace;
     background-color: black;
     padding: 5px;
-    background-image: url('background.png');
     background-attachment: fixed;
     color: #00ff08
 }

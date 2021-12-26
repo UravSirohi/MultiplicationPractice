@@ -57,6 +57,11 @@ function startTimer() {
     let lbl = document.getElementById('lblTimeLeft');
     lbl.innerHTML = timeleft.toString();
     if (timeleft > 0) {
+       if (timeleft < 11) {
+        lbl.style.color = "red"
+      } else {
+        lbl.style.color = "aqua"
+      }
       startTimer();
       timeleft = timeleft - 1;
     }
