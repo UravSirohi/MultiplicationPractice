@@ -1,6 +1,7 @@
-var timeleft  = 30;
+var timeleft = 30;
 var timeoutId;
 var btnFreeze = document.getElementById('btnFreeze');
+var level = 10;
 
 
 function formLoad() {
@@ -9,7 +10,7 @@ function formLoad() {
   let lbl = document.getElementById('lblMsg');
   let lblFirst = document.getElementById('lblFirst');
   let lblSecond = document.getElementById('lblSecond');
-  let level = hardness();
+  level = hardness();
   let x = Math.round((Math.random() * level));
   let y = Math.round((Math.random() * level));
   let random = Math.round(Math.random() * 10);
@@ -24,7 +25,7 @@ function formLoad() {
   lblwrong.innerHTML = ' '
   let txtAnswer = document.getElementById('txtAnswer');
   txtAnswer.value = '';
-  resetTimer(level);
+  resetTimer();
 }
 
 
@@ -35,16 +36,17 @@ function hardness() {
 }
 
 
-function resetTimer(level) {
-  timeleft = level;
+function resetTimer() {
   if (level == 100) {
-    timeleft = 30;
+    timeleft = 45;
   }
   else if (level == 1000) {
     timeleft = 60;
   }
   else if (level == 10000) {
     timeleft = 90;
+  } else if (level == 10) {
+    timeleft = 30
   }
   startTimer();
 }
@@ -54,18 +56,19 @@ function startTimer() {
   timeoutId = setTimeout(() => {
     let lbl = document.getElementById('lblTimeLeft');
     lbl.innerHTML = timeleft.toString();
-    if (timeleft > 0) {
+    btnFreeze = document.getElementById('btnFreeze')
+    if (timeleft > 0 && btnFreeze.value == "Pause") {
       if (timeleft < 11) {
-        lbl.style.color = "red"
+        lbl.style.color = "red";
       } else {
-        lbl.style.color = "aqua"
+        lbl.style.color = "aqua";
       }
       startTimer();
       timeleft = timeleft - 1;
-    } 
-    else {
+    } else if (btnFreeze.value == "Pause") {
       submit();
     }
+    console.log(btnFreeze.value)
   }, 1000);
 }
 
@@ -145,12 +148,19 @@ function skip() {
 
 
 function freeze() {
-  btnFreeze = document.getElementById('btnFreeze')
+  let lblFirst = document.getElementById('lblFirst');
+  let lblSecond = document.getElementById('lblSecond');
+  btnFreeze = document.getElementById('btnFreeze');
   if (btnFreeze.value == "Pause") {
     btnFreeze.value = "Resume";
     btnFreeze.innerHTML = "Resume";
+    lblFirst.innerHTML = '';
+    lblSecond.innerHTML = '';
   } else {
     btnFreeze.value = "Pause";
     btnFreeze.innerHTML = "Pause";
+    lblFirst.innerHTML = Math.round((Math.random() * level)).toString();
+    lblSecond.innerHTML = Math.round((Math.random() * level)).toString();
+    startTimer();
   }
 }

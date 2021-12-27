@@ -145,3 +145,20 @@ function skip() {
 }
 
 
+function freeze() {
+  let lblFirst = document.getElementById('lblFirst');
+  let lblSecond = document.getElementById('lblSecond');
+  btnFreeze = document.getElementById('btnFreeze');
+  if (btnFreeze.value == "Pause") {
+    btnFreeze.value = "Resume";
+    btnFreeze.innerHTML = "Resume";
+    lblFirst.innerHTML = '';
+    lblSecond.innerHTML = '';
+  } else {
+    btnFreeze.value = "Pause";
+    btnFreeze.innerHTML = "Pause";
+    lblFirst.innerHTML = Math.round((Math.random() * level)).toString();
+    lblSecond.innerHTML = Math.round((Math.random() * level)).toString();
+    startTimer();
+  }
+}
